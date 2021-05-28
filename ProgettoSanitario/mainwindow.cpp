@@ -27,7 +27,7 @@ void MainWindow::on_accediButton_clicked()
 
     if(b and p){
         cout << "utente e password corretti" << endl;
-        InterfacciaAmministratore* interfaccia = new InterfacciaAmministratore();
+        InterfacciaAmministratore* interfaccia = new InterfacciaAmministratore(direzione);
         interfaccia->show();
         this->close();
     }
