@@ -16,8 +16,6 @@ public:
     ~InterfacciaAmministratore();
 
 private slots:
-    void on_pushButton_clicked();
-
     void on_inseriscistrutturaButton_clicked();
 
     void on_actioninserisciStruttura_triggered();
