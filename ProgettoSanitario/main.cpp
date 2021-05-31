@@ -15,9 +15,9 @@
 #include "Cittadino.h"
 #include "DirezioneSanitaria.h"
 #include "AmministrativoCup.h"
-
+#include "Data.h"
+#include <iostream>
 using namespace std;
-
 int main(int argc, char *argv[])
 {
         Medico* m = new Medico("mario","pneumologia");
@@ -90,34 +90,40 @@ int main(int argc, char *argv[])
          */
 
         //aggiungo direzione sanitaria
-        DirezioneSanitaria* asl1 = new DirezioneSanitaria("asl1","Mario Rossi", "Roma1" );
+        Data::asl1 = new DirezioneSanitaria("asl1","Mario Rossi", "Roma1" );
 
         //aggiungo utenti alla direzione sanitaria
-        asl1->aggiungiUtente(cittadino);
-        asl1->aggiungiUtente(cittadino1);
-        asl1->aggiungiUtente(cittadino2);
+        Data::asl1->aggiungiUtente(cittadino);
+        Data::asl1->aggiungiUtente(cittadino1);
+        Data::asl1->aggiungiUtente(cittadino2);
 
-        asl1->stampaListaUtenti();
+        Data::asl1->stampaListaUtenti();
 
         //rimuovo utenti dalla lista
         //asl1->rimuoviUtente(0);
-        asl1->stampaListaUtenti();
-        asl1->aggiungiUtente(cittadino);
-        asl1->stampaListaUtenti();
+        Data::asl1->stampaListaUtenti();
+        Data::asl1->aggiungiUtente(cittadino);
+        Data::asl1->stampaListaUtenti();
 
         //aggiungo struttura alla direzione sanitaria
-        asl1->aggiungiStruttura(struttura);
-        asl1->aggiungiStruttura(struttura2);
+        Data::asl1->aggiungiStruttura(struttura);
+        Data::asl1->aggiungiStruttura(struttura2);
         //asl1->aggiungiStruttura(struttura);	//aggiungo la stessa struttura, gestisco,OK
 
-        asl1->stampaListaStrutture();		//ristampo,OK
+        Data::asl1->stampaListaStrutture();		//ristampo,OK
         //asl1->rimuoviStruttura(0);			//rimuovo una struttura,OK
         //asl1->stampaListaStrutture();		//stampa le strutture, OK
         //asl1->aggiungiStruttura(struttura);	//riaggiungo la struttura, nuovo identificativo, OK
         //asl1->stampaListaStrutture();
 
         AmministrativoCup* amministratore = new AmministrativoCup("Marco","admin","password");
-        asl1->setAmministratoreSistema(amministratore);
+        Data::asl1->setAmministratoreSistema(amministratore);
+        cout << Data::asl1->getAmministratoreSistema()->getNome()<< endl;
+
+
+        DirezioneSanitaria::listaProva[1] = 100;
+        DirezioneSanitaria::listaProva[2] = 200;
+        DirezioneSanitaria::listaProva[3] = 300;
 
     QApplication a(argc, argv);
 
@@ -131,7 +137,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    MainWindow* w = new MainWindow(asl1);
+    MainWindow* w = new MainWindow();
     w->show();
     return a.exec();
 }

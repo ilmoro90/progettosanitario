@@ -15,16 +15,24 @@
 #include "AmministrativoCup.h"
 using namespace std;
 
+
+
 class DirezioneSanitaria {
 private:
 	string direttore,localita,nome;
-	map<int, Utente*> listaUtenti;
-	map<int, Struttura*> listaStrutture;
-	map<float, Prestazione*> listaPrestazioniDisponibili;
-	int counterUtenti = 1;
-	int counterStruttura = 1;
-    AmministrativoCup* amministratore;
 public:
+    static map<int, Utente*> listaUtenti;
+    static map<int, Struttura*> listaStrutture;
+    static map<float, Prestazione*> listaPrestazioniDisponibili;
+    static int counterUtenti;
+    static int counterStruttura;
+    static AmministrativoCup* amministratore;
+
+    static map<int,int> listaProva;
+    static void aggiungiElementoListaProva(int k, int v){
+        listaProva[k] = v;
+    }
+
 	DirezioneSanitaria(string nome, string direttore, string localita);
 	bool aggiungiUtente(Utente* utente);
 	bool rimuoviUtente(int numeroUtente);
@@ -49,20 +57,20 @@ public:
 		this->direttore = direttore;
 	}
 
-	const map<int, Struttura*>& getListaStrutture() const {
+    map<int, Struttura*> getListaStrutture(){
 		return listaStrutture;
 	}
 
-	void setListaStrutture(const map<int, Struttura*> &listaStrutture) {
-		this->listaStrutture = listaStrutture;
+	void setListaStrutture(const map<int, Struttura*> &listaStrutt) {
+		listaStrutture = listaStrutt;
 	}
 
 	const map<int, Utente*>& getListaUtenti() const {
 		return listaUtenti;
 	}
 
-	void setListaUtenti(const map<int, Utente*> &listaUtenti) {
-		this->listaUtenti = listaUtenti;
+	void setListaUtenti(const map<int, Utente*> &listaUt) {
+		listaUtenti = listaUt;
 	}
 
 	const string& getLocalita() const {
@@ -75,12 +83,14 @@ public:
 	string getNome() {
 		return this->nome;
 	}
-    void setAmministratoreSistema(AmministrativoCup* amministratore){
-        this->amministratore = amministratore;
+    void setAmministratoreSistema(AmministrativoCup* amm){
+        amministratore = amm;
     }
     AmministrativoCup* getAmministratoreSistema(){
-        return this->amministratore;
+        return amministratore;
     }
+
+
 };
 
 #endif /* DIREZIONESANITARIA_H_ */

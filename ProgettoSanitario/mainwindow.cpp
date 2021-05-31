@@ -3,13 +3,14 @@
 #include <iostream>
 #include "DirezioneSanitaria.h"
 #include "InterfacciaAmministratore.h"
+#include "Data.h"
+#include "Utente.h"
 using namespace std;
 
-MainWindow::MainWindow(DirezioneSanitaria* direzione, QWidget *parent)
+MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->direzione = direzione;
 }
 
 MainWindow::~MainWindow()
@@ -20,10 +21,17 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_accediButton_clicked()
 {
+
     string utente = ui->campoNomeUtente->toPlainText().toStdString();
-    bool b = utente == direzione->getAmministratoreSistema()->getUtente();
+    bool b = utente == Data::asl1->getAmministratoreSistema()->getUtente();
     string password = ui->campoPasswordUtente->toPlainText().toStdString();
-    bool p = password==direzione->getAmministratoreSistema()->getPassword();
+    bool p = password==Data::asl1->getAmministratoreSistema()->getPassword();
+    bool possonoEntraretutti = false;
+    if(possonoEntraretutti){
+        InterfacciaAmministratore* interfaccia = new InterfacciaAmministratore();
+        interfaccia->show();
+        this->close();
+    }
 
     if(b and p){
         cout << "utente e password corretti" << endl;

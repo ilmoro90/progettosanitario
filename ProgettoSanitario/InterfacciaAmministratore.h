@@ -20,7 +20,36 @@ private slots:
 
     void on_actioninserisciStruttura_triggered();
 
+    void on_stampaStruttureButton_clicked();
+
+    void on_modificaStrutturaButton_clicked();
+
+    void on_rimuoviStrutturaButton_clicked();
+
+    void on_prenotaButton_clicked();
+
+    void on_disdiciPrenoButton_clicked();
+
+    void on_stampaPrenotaButton_clicked();
+
+    void on_inserisciUtenteButton_clicked();
+
+    void on_modificaUtenteButton_clicked();
+
+    void on_rimuoviUtenteButton_clicked();
+
+    void on_stampaUtenteButton_clicked();
+
+    void on_aggiungiMedicoButton_clicked();
+
+    void on_modificaMedicoButton_clicked();
+
+    void on_rimuoviMedicoButton_clicked();
+
+    void on_stampaListaMedici_clicked();
+
 private:
+    int count = 0;
     Ui::InterfacciaAmministratore *ui;
 };
 

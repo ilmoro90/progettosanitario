@@ -10,6 +10,17 @@
 #include "Utente.h"
 #include <math.h>
 
+map<int, Utente*> DirezioneSanitaria::listaUtenti;
+map<int, Struttura*> DirezioneSanitaria::listaStrutture;
+map<float, Prestazione*> DirezioneSanitaria::listaPrestazioniDisponibili;
+int DirezioneSanitaria::counterUtenti;
+int DirezioneSanitaria::counterStruttura;
+AmministrativoCup* DirezioneSanitaria::amministratore;
+
+map<int,int> DirezioneSanitaria::listaProva;
+
+
+
 map<int,Prestazione*> merge(map<int,Prestazione*> primaMappa, map<int,Prestazione*> secondaMappa){
 	map<int,Prestazione*> result;
 	map<int,Prestazione*>::iterator it_prova = primaMappa.begin();
@@ -54,30 +65,32 @@ DirezioneSanitaria::DirezioneSanitaria(string nome, string direttore, string loc
 	this->direttore=direttore;
 	this->localita=localita;
 	this->nome=nome;
+    counterStruttura = 1;
+    counterUtenti = 1;
 }
 
 bool DirezioneSanitaria::aggiungiUtente(Utente* utente) {
-	map<int,Utente*>::iterator it = this->listaUtenti.begin();
-	if(it == this->listaUtenti.end()){
-		this->listaUtenti.insert(pair<int,Utente*>(counterUtenti,utente));
+	map<int,Utente*>::iterator it = listaUtenti.begin();
+	if(it == listaUtenti.end()){
+		listaUtenti.insert(pair<int,Utente*>(counterUtenti,utente));
 		counterUtenti++;
 		cout << "Utente " << utente->getNome() <<" aggiunto." << endl;
 		return true;
 	}
-	if(giaPresente(this->listaUtenti, utente)){
+	if(giaPresente(listaUtenti, utente)){
 		cout << "Utente già inserito." << endl;
 		return false;
 	}
-	this->listaUtenti.insert(pair<int,Utente*>(counterUtenti,utente));
+	listaUtenti.insert(pair<int,Utente*>(counterUtenti,utente));
 	counterUtenti++;
 	cout << "Utente " << utente->getNome() <<" aggiunto." << endl;
 	return true;
 }
 
 bool DirezioneSanitaria::rimuoviUtente(int numeroUtente) {
-	auto it = this->listaUtenti.find(numeroUtente);
-	if(it!=this->listaUtenti.end()) {
-		this->listaUtenti.erase(numeroUtente);
+	auto it = listaUtenti.find(numeroUtente);
+	if(it!=listaUtenti.end()) {
+		listaUtenti.erase(numeroUtente);
 		cout << "Utente " << numeroUtente << " rimosso con successo" << endl;
 		return true;
 	}
@@ -86,27 +99,27 @@ bool DirezioneSanitaria::rimuoviUtente(int numeroUtente) {
 }
 
 bool DirezioneSanitaria::aggiungiStruttura(Struttura* struttura) {
-	map<int,Struttura*>::iterator it = this->listaStrutture.begin();
-	if(it == this->listaStrutture.end()){
-		this->listaStrutture.insert(pair<int,Struttura*>(counterStruttura,struttura));
+	map<int,Struttura*>::iterator it = listaStrutture.begin();
+	if(it == listaStrutture.end()){
+		listaStrutture.insert(pair<int,Struttura*>(counterStruttura,struttura));
 		counterStruttura++;
 		cout << "Struttura "<< struttura->getNomeStruttura() <<" aggiunta." << endl;
 		return true;
 	}
-	if(giaPresente(this->listaStrutture, struttura)){
+	if(giaPresente(listaStrutture, struttura)){
 		cout << "Struttura "<< struttura->getNomeStruttura() << " già inserita." << endl;
 		return false;
 	}
-	this->listaStrutture.insert(pair<int,Struttura*>(counterStruttura,struttura));
+	listaStrutture.insert(pair<int,Struttura*>(counterStruttura,struttura));
 	counterStruttura++;
 	cout << "Struttura "<< struttura->getNomeStruttura() <<" aggiunta." << endl;
 	return true;
 }
 
 bool DirezioneSanitaria::rimuoviStruttura(int numeroStruttura) {
-	auto it = this->listaStrutture.find(numeroStruttura);
-	if(it!=this->listaStrutture.end()) {
-		this->listaStrutture.erase(numeroStruttura);
+	auto it = listaStrutture.find(numeroStruttura);
+	if(it!=listaStrutture.end()) {
+		listaStrutture.erase(numeroStruttura);
 		cout << "Struttura " << numeroStruttura << " rimossa con successo" << endl;
 		return true;
 	}
@@ -115,16 +128,16 @@ bool DirezioneSanitaria::rimuoviStruttura(int numeroStruttura) {
 }
 
 void DirezioneSanitaria::stampaListaStrutture() {
-	map<int,Struttura*>::iterator it = this->listaStrutture.begin();
-	if(it == this->listaStrutture.end()){
+	map<int,Struttura*>::iterator it = listaStrutture.begin();
+	if(it == listaStrutture.end()){
 		cout << "Non ci sono strutture." << endl;
 		return;
 	}
 	cout << "\n------------Lista Strutture --("<< this->nome <<")-----------------------" << endl;
-	while(it != this->listaStrutture.end()){
-		cout << "Id struttura: " << it->first << " - "
+	while(it != listaStrutture.end()){
+        cout << "Id Struttura: " << it->first << " - "
 				<< "Nome: " << (it->second)->getNomeStruttura()
-				<< " Coordinate: " << it->second->getCoordinate()
+                << " - Coordinate: " << it->second->getCoordinate()
 				<< endl;
 		it++;
 	}
@@ -133,13 +146,13 @@ void DirezioneSanitaria::stampaListaStrutture() {
 }
 
 void DirezioneSanitaria::stampaListaUtenti() {
-	map<int,Utente*>::iterator it = this->listaUtenti.begin();
-	if(it == this->listaUtenti.end()){
+	map<int,Utente*>::iterator it = listaUtenti.begin();
+	if(it == listaUtenti.end()){
 		cout << "Non ci sono utenti." << endl;
 		return;
 	}
 	cout << "\n------------Lista Utenti --("<< this->nome <<")-----------------------" << endl;
-	while(it != this->listaUtenti.end()){
+	while(it != listaUtenti.end()){
 		cout << "Id utente: " << it->first << " - "
 				<< "Nome: " << (it->second)->getNome()
 				<< endl;
@@ -156,19 +169,19 @@ DirezioneSanitaria::~DirezioneSanitaria() {
 
 void DirezioneSanitaria::rilevaPrestazioniDisponibiliDalleStrutture() {
 	//svuoto la lista
-	map<float,Prestazione*>::iterator _it = this->listaPrestazioniDisponibili.begin();
-	while(_it != this->listaPrestazioniDisponibili.end()){
+	map<float,Prestazione*>::iterator _it = listaPrestazioniDisponibili.begin();
+	while(_it != listaPrestazioniDisponibili.end()){
 		listaPrestazioniDisponibili.erase(_it);
 		_it++;
 	}
 	//itero sulle strutture e per ogni struttura inserisco le prestazioni nella lista della direzione sanitaria
-	map<int,Struttura*>::iterator it_strutt = this->listaStrutture.begin();
-	if(it_strutt == this->listaStrutture.end()){
+	map<int,Struttura*>::iterator it_strutt = listaStrutture.begin();
+	if(it_strutt == listaStrutture.end()){
 		cout << "Mi dispiace, ancora non sono presenti strutture." << endl;
 		return;
 	}
 
-	while(it_strutt != this->listaStrutture.end()){
+	while(it_strutt != listaStrutture.end()){
 		//prendo la lista esami della struttura
 		map<int,Prestazione*> aux = it_strutt->second->getListaPrestazioniDisponibili();
 		map<int,Prestazione*>::iterator it_prestDisp = aux.begin();
@@ -177,7 +190,7 @@ void DirezioneSanitaria::rilevaPrestazioniDisponibiliDalleStrutture() {
 			//int intero = (int)f;
 			//float d = (f-intero)*10000;
 			float f = float(it_prestDisp->first) + float(it_strutt->first)/10000;
-			this->listaPrestazioniDisponibili.insert(pair<float,Prestazione*>(f,it_prestDisp->second));
+			listaPrestazioniDisponibili.insert(pair<float,Prestazione*>(f,it_prestDisp->second));
 			it_prestDisp++;
 		}
 		it_strutt++;
@@ -187,13 +200,13 @@ void DirezioneSanitaria::rilevaPrestazioniDisponibiliDalleStrutture() {
 
 void DirezioneSanitaria::stampaListaPrestazioniDisponibili() {
 	rilevaPrestazioniDisponibiliDalleStrutture();
-	map<float,Prestazione*>::iterator it = this->listaPrestazioniDisponibili.begin();
-	if(it == this->listaPrestazioniDisponibili.end()){
+	map<float,Prestazione*>::iterator it = listaPrestazioniDisponibili.begin();
+	if(it == listaPrestazioniDisponibili.end()){
 		cout << "Non ci sono prestazioni disponibili." << endl;
 		return;
 	}
 	cout << "\n------------Lista Prestazioni disponibili --("<< this->nome <<")-----------------------" << endl;
-	while(it != this->listaPrestazioniDisponibili.end()){
+	while(it != listaPrestazioniDisponibili.end()){
 		cout << "Prestazione numero: " << it->first
 				<< " - Branca: " << (it->second)->getBranca()
 				<< " - orario: " << it->second->getOraInizio() << "-" << it->second->getOraFine()
@@ -209,13 +222,13 @@ void DirezioneSanitaria::stampaListaPrestazioniDisponibili() {
 
 void DirezioneSanitaria::stampaListaPrestazioniDisponibili(string tipo) {
 	rilevaPrestazioniDisponibiliDalleStrutture();
-	map<float,Prestazione*>::iterator it = this->listaPrestazioniDisponibili.begin();
-	if(it == this->listaPrestazioniDisponibili.end()){
+	map<float,Prestazione*>::iterator it = listaPrestazioniDisponibili.begin();
+	if(it == listaPrestazioniDisponibili.end()){
 		cout << "Non ci sono prestazioni disponibili." << endl;
 		return;
 	}
 	cout << "\n------------Lista Prestazioni disponibili --("<< this->nome <<")-----------------------" << endl;
-	while(it != this->listaPrestazioniDisponibili.end()){
+	while(it != listaPrestazioniDisponibili.end()){
 		if(it->second->getTipo()==tipo){
 		cout << "Prestazione numero: " << it->first
 				<< " - Branca: " << (it->second)->getBranca()
@@ -232,14 +245,14 @@ void DirezioneSanitaria::stampaListaPrestazioniDisponibili(string tipo) {
 }
 
 float DirezioneSanitaria::prenotaPrestazione(Utente* utente, string nomePrestazione,int ora){
-	map<float,Prestazione*>::iterator it = this->listaPrestazioniDisponibili.begin();
+	map<float,Prestazione*>::iterator it = listaPrestazioniDisponibili.begin();
 	//ciclo sulle prenotazioni disponibili per filtro di ora e tipo esame
-	if(it == this->listaPrestazioniDisponibili.end()){
+	if(it == listaPrestazioniDisponibili.end()){
 		cout << "Non ci sono prestazioni disponibili." << endl;
 		return -1;
 	}
 	float f;
-	while(it != this->listaPrestazioniDisponibili.end()){
+	while(it != listaPrestazioniDisponibili.end()){
 		if(it->second->getNome()==nomePrestazione
 			and ora>=it->second->getOraInizio()
 			and ora<=it->second->getOraFine()){
@@ -250,7 +263,7 @@ float DirezioneSanitaria::prenotaPrestazione(Utente* utente, string nomePrestazi
 				float aux = (f-int(f))*10000;
 				aux=roundf(aux);
 				int idStruttura = (int)aux;
-				int r = this->listaStrutture[idStruttura]->prenotaPrestazione(p);
+				int r = listaStrutture[idStruttura]->prenotaPrestazione(p);
 				if(r<0){
 					return -1;
 				}
@@ -268,12 +281,12 @@ float DirezioneSanitaria::prenotaPrestazione(Utente* utente, string nomePrestazi
 
 Utente* DirezioneSanitaria::trovaUtente(string nome){
 	Utente* aux = new Utente();
-	map<int,Utente*>::iterator it = this->listaUtenti.begin();
-	if(it == this->listaUtenti.end()){
+	map<int,Utente*>::iterator it = listaUtenti.begin();
+	if(it == listaUtenti.end()){
 		cout << "non ci sono utenti nel sistema." << endl;
 		return aux;
 	}
-	while(it != this->listaUtenti.end()){
+	while(it != listaUtenti.end()){
 		if(it->second->getNome()==nome){
 			cout << "Utente "<< nome << " trovato."<< endl;
 			return it->second;
@@ -290,6 +303,6 @@ bool DirezioneSanitaria::disdiciPrestazione(float numeroPrenotazioneDirezione) {
 	aux=roundf(aux);
 	int idStruttura = (int)aux;
 	int numeroPrenotazioneStruttura = (int)numeroPrenotazioneDirezione;
-	return this->listaStrutture[idStruttura]->disdiciPrenotazione(numeroPrenotazioneStruttura);
+	return listaStrutture[idStruttura]->disdiciPrenotazione(numeroPrenotazioneStruttura);
 
 }

@@ -9,7 +9,9 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Data.cpp \
     InterfacciaAmministratore.cpp \
+    aggiungiprenotazionedialog.cpp \
     main.cpp \
     mainwindow.cpp \
     AmministrativoCup.cpp \
@@ -25,11 +27,15 @@ SOURCES += \
     Struttura.cpp \
     Utente.cpp \
     Visita.cpp \
+    modificalastrutturadialog.cpp \
+    rimuovistrutturadialog.cpp \
     strutturadialog.cpp
 
 
 HEADERS += \
+    Data.h \
     InterfacciaAmministratore.h \
+    aggiungiprenotazionedialog.h \
     mainwindow.h \
     mainwindow.h \
     AmministrativoCup.h \
@@ -45,11 +51,16 @@ HEADERS += \
     Struttura.h \
     Utente.h \
     Visita.h \
+    modificalastrutturadialog.h \
+    rimuovistrutturadialog.h \
     strutturadialog.h
 
 FORMS += \
     InterfacciaAmministratore.ui \
+    aggiungiprenotazionedialog.ui \
     mainwindow.ui \
+    modificalastrutturadialog.ui \
+    rimuovistrutturadialog.ui \
     strutturadialog.ui
 
 TRANSLATIONS += \

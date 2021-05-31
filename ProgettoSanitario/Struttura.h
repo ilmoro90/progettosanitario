@@ -48,7 +48,7 @@ public:
 	bool disdiciPrenotazione(int numeroPrenotazione);
 
 	string getCoordinate() {
-		string result = to_string(this->coordinate->getGradi())+ "\°" + to_string(this->coordinate->getMinuti())+ "\'" + to_string(this->coordinate->getSecondi()) + "\"";
+        string result = to_string(this->coordinate->getGradi())+ " gradi " + to_string(this->coordinate->getMinuti())+ "\'" + to_string(this->coordinate->getSecondi()) + "\"";
 		return result;
 	}
 

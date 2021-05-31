@@ -25,7 +25,7 @@ public:
 		this->password = password;
 	}
 
-	const string& getUtente() const {
+    string getUtente(){
 		return utente;
 	}
 
