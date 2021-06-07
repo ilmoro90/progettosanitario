@@ -6,81 +6,144 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>556</width>
+    <height>337</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Prenota</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="1">
+   <item row="1" column="0" colspan="2">
+    <spacer name="horizontalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="1" colspan="3">
+    <widget class="QTextBrowser" name="textBrowser">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>150</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>300</width>
+       <height>0</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="pushButtonPrenota">
+     <property name="text">
+      <string>Prenota</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2">
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="text">
+      <string>Annulla</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>GroupBox</string>
+      <string>Prenotazione prestazione</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_4">
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Nome della Prestazione</string>
+         <string>Orario</string>
+        </property>
+        <property name="buddy">
+         <cstring>spinBoxOrario</cstring>
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="lineEdit_2"/>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="spinBoxOrario"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QRadioButton" name="radioButtonEsame">
+        <property name="text">
+         <string>Esame</string>
+        </property>
+       </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
          <string>Tipologia Esame</string>
         </property>
+        <property name="buddy">
+         <cstring>radioButtonEsame</cstring>
+        </property>
        </widget>
       </item>
-      <item row="2" column="3">
-       <widget class="QSpinBox" name="spinBox"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_3">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>orario</string>
+         <string>Nome della Prestazione</string>
+        </property>
+        <property name="buddy">
+         <cstring>lineEdit_2</cstring>
         </property>
        </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QRadioButton" name="radioButton_2">
-        <property name="text">
-         <string>Visita</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="1" column="1" colspan="3">
-       <widget class="QRadioButton" name="radioButton">
-        <property name="text">
-         <string>Esame</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QLineEdit" name="lineEdit"/>
       </item>
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
          <string>Nome Utente</string>
+        </property>
+        <property name="buddy">
+         <cstring>nomeUtente</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QRadioButton" name="radioButtonVisita">
+        <property name="text">
+         <string>Visita</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="5" colspan="2">
+       <widget class="QPushButton" name="pushButtonCerca">
+        <property name="text">
+         <string>Cerca</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="5">
+       <widget class="QLineEdit" name="nomeUtente">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>10</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="5">
+       <widget class="QLineEdit" name="lineEdit_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>10</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
        </widget>
       </item>
@@ -89,6 +152,17 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>nomeUtente</tabstop>
+  <tabstop>radioButtonEsame</tabstop>
+  <tabstop>radioButtonVisita</tabstop>
+  <tabstop>spinBoxOrario</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>pushButtonCerca</tabstop>
+  <tabstop>pushButtonPrenota</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>textBrowser</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

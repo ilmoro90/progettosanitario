@@ -19,7 +19,6 @@ public:
 
 private slots:
     void on_accediButton_clicked();
-
 private:
     Ui::MainWindow *ui;
     DirezioneSanitaria* direzione;

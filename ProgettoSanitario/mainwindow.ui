@@ -30,7 +30,27 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="5" column="2">
+    <item row="0" column="2">
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>157</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Nome Utente</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="2">
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -43,13 +63,6 @@
       </property>
      </spacer>
     </item>
-    <item row="2" column="1">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Nome Utente</string>
-      </property>
-     </widget>
-    </item>
     <item row="4" column="2">
      <widget class="QPushButton" name="accediButton">
       <property name="enabled">
@@ -57,6 +70,37 @@
       </property>
       <property name="text">
        <string>Accedi</string>
+      </property>
+      <property name="shortcut">
+       <string>Return</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QTextEdit" name="campoNomeUtente">
+      <property name="maximumSize">
+       <size>
+        <width>200</width>
+        <height>25</height>
+       </size>
+      </property>
+      <property name="toolTip">
+       <string>inserisci nome utente</string>
+      </property>
+      <property name="tabChangesFocus">
+       <bool>true</bool>
+      </property>
+      <property name="undoRedoEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="acceptRichText">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>Nome Utente</string>
       </property>
      </widget>
     </item>
@@ -83,6 +127,12 @@
       </property>
       <property name="toolTip">
        <string>inserisci password</string>
+      </property>
+      <property name="tabChangesFocus">
+       <bool>true</bool>
+      </property>
+      <property name="placeholderText">
+       <string>password</string>
       </property>
      </widget>
     </item>
@@ -113,29 +163,10 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="2">
-     <spacer name="verticalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>157</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="2">
-     <widget class="QTextEdit" name="campoNomeUtente">
-      <property name="maximumSize">
-       <size>
-        <width>200</width>
-        <height>25</height>
-       </size>
-      </property>
-      <property name="toolTip">
-       <string>inserisci nome utente</string>
+    <item row="5" column="2">
+     <widget class="QLabel" name="messaggio">
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </item>
@@ -153,6 +184,11 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>campoNomeUtente</tabstop>
+  <tabstop>campoPasswordUtente</tabstop>
+  <tabstop>accediButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
