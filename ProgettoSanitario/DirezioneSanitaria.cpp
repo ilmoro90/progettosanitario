@@ -264,8 +264,8 @@ float DirezioneSanitaria::prenotaPrestazione(Utente* utente, string nomePrestazi
 				aux=roundf(aux);
 				int idStruttura = (int)aux;
 				int r = listaStrutture[idStruttura]->prenotaPrestazione(p);
-				if(r<0){
-					return -1;
+                if(r==0){
+                    return 0;
 				}
 				cout << "Prenotazione effettuata presso la struttura: "
 						<< listaStrutture[idStruttura]->getNomeStruttura()
@@ -302,7 +302,13 @@ bool DirezioneSanitaria::disdiciPrestazione(float numeroPrenotazioneDirezione) {
 	float aux = (numeroPrenotazioneDirezione-int(numeroPrenotazioneDirezione))*10000;
 	aux=roundf(aux);
 	int idStruttura = (int)aux;
-	int numeroPrenotazioneStruttura = (int)numeroPrenotazioneDirezione;
-	return listaStrutture[idStruttura]->disdiciPrenotazione(numeroPrenotazioneStruttura);
+    if(idStruttura==0){
+        return false;
+    }
+    else{
+        int numeroPrenotazioneStruttura = (int)numeroPrenotazioneDirezione;
+        return listaStrutture[idStruttura]->disdiciPrenotazione(numeroPrenotazioneStruttura);
+    }
+
 
 }

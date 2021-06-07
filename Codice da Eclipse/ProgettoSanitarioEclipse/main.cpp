@@ -308,7 +308,7 @@ int main(){
 				break;
 			}
 
-			//rimuovi prestazione
+			//stampa
 			case 's':{
 				int in;
 				cout << "Cosa vuoi stampare?\n"

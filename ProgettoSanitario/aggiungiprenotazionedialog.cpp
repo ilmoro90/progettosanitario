@@ -9,6 +9,7 @@ aggiungiPrenotazioneDialog::aggiungiPrenotazioneDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::aggiungiPrenotazioneDialog)
 {
+    Data::asl1->rilevaPrestazioniDisponibiliDalleStrutture();
     ui->setupUi(this);
 }
 
@@ -95,6 +96,11 @@ void aggiungiPrenotazioneDialog::on_pushButtonPrenota_clicked()
             if(numeroPrenotazione < 0){
                 QMessageBox qmb;
                 qmb.setText("ERRORE: Non è stato possibile prenotare");
+                qmb.exec();
+            }
+            else if(numeroPrenotazione==0){
+                QMessageBox qmb;
+                qmb.setText("ERRORE: Hai già prenotato");
                 qmb.exec();
             }
             else{

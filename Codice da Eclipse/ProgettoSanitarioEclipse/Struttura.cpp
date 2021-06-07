@@ -179,7 +179,7 @@ int Struttura::prenotaPrestazione(Prenotazione* prenotazione){
 			//già presente tra le prenotazioni nel sistema...
 			if(giaPresente(this->listaPrenotazioniEffettuate,prenotazione)){
 				cout << "Hai già prenotato!" << endl;
-				return -1;
+				return 0;
 			}
 			int numeroPrenotazione = it->first;
 			this->listaPrestazioniNonDisponibili.insert(pair<int,Prestazione*>(it->first,it->second));

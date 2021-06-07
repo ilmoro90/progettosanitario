@@ -20,8 +20,8 @@ private:
 	Coordinate* coordinate;
 	string nomeStruttura;
 	map<int,Medico*> listaMediciStruttura;
-	map<int,Prestazione*> listaPrestazioniDisponibili;
-	map<int,Prestazione*> listaPrestazioniNonDisponibili;
+    map<int,Prestazione*> listaPrestazioniDisponibili;
+    map<int,Prestazione*> listaPrestazioniNonDisponibili;
 	map<int,Prenotazione*> listaPrenotazioniEffettuate;
 	map<int,Esame*> listaEsami;
 	map<int,Visita*>listaVisite;

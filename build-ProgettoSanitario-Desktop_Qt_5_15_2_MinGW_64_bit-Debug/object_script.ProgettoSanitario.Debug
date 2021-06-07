@@ -1,6 +1,7 @@
 debug/Data.o
 debug/InterfacciaAmministratore.o
 debug/aggiungiprenotazionedialog.o
+debug/disdicidialog.o
 debug/main.o
 debug/mainwindow.o
 debug/AmministrativoCup.o
@@ -22,6 +23,7 @@ debug/strutturadialog.o
 debug/qrc_qmake_qmake_qm_files.o
 debug/moc_InterfacciaAmministratore.o
 debug/moc_aggiungiprenotazionedialog.o
+debug/moc_disdicidialog.o
 debug/moc_mainwindow.o
 debug/moc_modificalastrutturadialog.o
 debug/moc_rimuovistrutturadialog.o

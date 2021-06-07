@@ -48,6 +48,16 @@ private slots:
 
     void on_stampaListaMedici_clicked();
 
+    void on_actionStampa_Struttura_triggered();
+
+    void on_actionRimuovi_Struttura_triggered();
+
+    void on_actionModifica_Struttura_triggered();
+
+    void on_actionPrenota_triggered();
+
+    void on_actionDisdici_triggered();
+
 private:
     int count = 0;
     Ui::InterfacciaAmministratore *ui;

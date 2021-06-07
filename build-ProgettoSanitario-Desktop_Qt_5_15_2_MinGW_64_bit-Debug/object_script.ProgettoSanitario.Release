@@ -1,6 +1,7 @@
 release/Data.o
 release/InterfacciaAmministratore.o
 release/aggiungiprenotazionedialog.o
+release/disdicidialog.o
 release/main.o
 release/mainwindow.o
 release/AmministrativoCup.o
@@ -22,6 +23,7 @@ release/strutturadialog.o
 release/qrc_qmake_qmake_qm_files.o
 release/moc_InterfacciaAmministratore.o
 release/moc_aggiungiprenotazionedialog.o
+release/moc_disdicidialog.o
 release/moc_mainwindow.o
 release/moc_modificalastrutturadialog.o
 release/moc_rimuovistrutturadialog.o

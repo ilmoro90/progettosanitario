@@ -207,9 +207,21 @@
      <string>Struttura</string>
     </property>
     <addaction name="actioninserisciStruttura"/>
+    <addaction name="actionModifica_Struttura"/>
+    <addaction name="actionRimuovi_Struttura"/>
+    <addaction name="actionStampa_Struttura"/>
+   </widget>
+   <widget class="QMenu" name="menuPrenotazioni">
+    <property name="title">
+     <string>Prenotazioni</string>
+    </property>
+    <addaction name="actionPrenota"/>
+    <addaction name="actionDisdici"/>
+    <addaction name="actionStampa_Prenotazioni"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuStruttura"/>
+   <addaction name="menuPrenotazioni"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
@@ -225,10 +237,40 @@
   </widget>
   <action name="actioninserisciStruttura">
    <property name="text">
-    <string>inserisciStruttura</string>
+    <string>Inserisci Struttura</string>
    </property>
    <property name="toolTip">
     <string>inserisci una struttura</string>
+   </property>
+  </action>
+  <action name="actionModifica_Struttura">
+   <property name="text">
+    <string>Modifica Struttura</string>
+   </property>
+  </action>
+  <action name="actionRimuovi_Struttura">
+   <property name="text">
+    <string>Rimuovi Struttura</string>
+   </property>
+  </action>
+  <action name="actionStampa_Struttura">
+   <property name="text">
+    <string>Stampa Strutture</string>
+   </property>
+  </action>
+  <action name="actionPrenota">
+   <property name="text">
+    <string>Prenota</string>
+   </property>
+  </action>
+  <action name="actionDisdici">
+   <property name="text">
+    <string>Disdici</string>
+   </property>
+  </action>
+  <action name="actionStampa_Prenotazioni">
+   <property name="text">
+    <string>Stampa Prenotazioni</string>
    </property>
   </action>
  </widget>

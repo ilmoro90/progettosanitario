@@ -30,6 +30,12 @@ class Ui_InterfacciaAmministratore
 {
 public:
     QAction *actioninserisciStruttura;
+    QAction *actionModifica_Struttura;
+    QAction *actionRimuovi_Struttura;
+    QAction *actionStampa_Struttura;
+    QAction *actionPrenota;
+    QAction *actionDisdici;
+    QAction *actionStampa_Prenotazioni;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QGroupBox *prenotazioni;
@@ -61,6 +67,7 @@ public:
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuStruttura;
+    QMenu *menuPrenotazioni;
     QStatusBar *statusbar;
     QToolBar *toolBar;
 
@@ -71,6 +78,18 @@ public:
         InterfacciaAmministratore->resize(800, 600);
         actioninserisciStruttura = new QAction(InterfacciaAmministratore);
         actioninserisciStruttura->setObjectName(QString::fromUtf8("actioninserisciStruttura"));
+        actionModifica_Struttura = new QAction(InterfacciaAmministratore);
+        actionModifica_Struttura->setObjectName(QString::fromUtf8("actionModifica_Struttura"));
+        actionRimuovi_Struttura = new QAction(InterfacciaAmministratore);
+        actionRimuovi_Struttura->setObjectName(QString::fromUtf8("actionRimuovi_Struttura"));
+        actionStampa_Struttura = new QAction(InterfacciaAmministratore);
+        actionStampa_Struttura->setObjectName(QString::fromUtf8("actionStampa_Struttura"));
+        actionPrenota = new QAction(InterfacciaAmministratore);
+        actionPrenota->setObjectName(QString::fromUtf8("actionPrenota"));
+        actionDisdici = new QAction(InterfacciaAmministratore);
+        actionDisdici->setObjectName(QString::fromUtf8("actionDisdici"));
+        actionStampa_Prenotazioni = new QAction(InterfacciaAmministratore);
+        actionStampa_Prenotazioni->setObjectName(QString::fromUtf8("actionStampa_Prenotazioni"));
         centralwidget = new QWidget(InterfacciaAmministratore);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -207,6 +226,8 @@ public:
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuStruttura = new QMenu(menubar);
         menuStruttura->setObjectName(QString::fromUtf8("menuStruttura"));
+        menuPrenotazioni = new QMenu(menubar);
+        menuPrenotazioni->setObjectName(QString::fromUtf8("menuPrenotazioni"));
         InterfacciaAmministratore->setMenuBar(menubar);
         statusbar = new QStatusBar(InterfacciaAmministratore);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -217,7 +238,14 @@ public:
 
         menubar->addAction(menuFile->menuAction());
         menubar->addAction(menuStruttura->menuAction());
+        menubar->addAction(menuPrenotazioni->menuAction());
         menuStruttura->addAction(actioninserisciStruttura);
+        menuStruttura->addAction(actionModifica_Struttura);
+        menuStruttura->addAction(actionRimuovi_Struttura);
+        menuStruttura->addAction(actionStampa_Struttura);
+        menuPrenotazioni->addAction(actionPrenota);
+        menuPrenotazioni->addAction(actionDisdici);
+        menuPrenotazioni->addAction(actionStampa_Prenotazioni);
 
         retranslateUi(InterfacciaAmministratore);
 
@@ -227,10 +255,16 @@ public:
     void retranslateUi(QMainWindow *InterfacciaAmministratore)
     {
         InterfacciaAmministratore->setWindowTitle(QCoreApplication::translate("InterfacciaAmministratore", "Asl Roma 1", nullptr));
-        actioninserisciStruttura->setText(QCoreApplication::translate("InterfacciaAmministratore", "inserisciStruttura", nullptr));
+        actioninserisciStruttura->setText(QCoreApplication::translate("InterfacciaAmministratore", "Inserisci Struttura", nullptr));
 #if QT_CONFIG(tooltip)
         actioninserisciStruttura->setToolTip(QCoreApplication::translate("InterfacciaAmministratore", "inserisci una struttura", nullptr));
 #endif // QT_CONFIG(tooltip)
+        actionModifica_Struttura->setText(QCoreApplication::translate("InterfacciaAmministratore", "Modifica Struttura", nullptr));
+        actionRimuovi_Struttura->setText(QCoreApplication::translate("InterfacciaAmministratore", "Rimuovi Struttura", nullptr));
+        actionStampa_Struttura->setText(QCoreApplication::translate("InterfacciaAmministratore", "Stampa Strutture", nullptr));
+        actionPrenota->setText(QCoreApplication::translate("InterfacciaAmministratore", "Prenota", nullptr));
+        actionDisdici->setText(QCoreApplication::translate("InterfacciaAmministratore", "Disdici", nullptr));
+        actionStampa_Prenotazioni->setText(QCoreApplication::translate("InterfacciaAmministratore", "Stampa Prenotazioni", nullptr));
         prenotaButton->setText(QCoreApplication::translate("InterfacciaAmministratore", "Prenota", nullptr));
         disdiciPrenoButton->setText(QCoreApplication::translate("InterfacciaAmministratore", "Disdici", nullptr));
         stampaPrenotaButton->setText(QCoreApplication::translate("InterfacciaAmministratore", "Stampa Prenotazioni", nullptr));
@@ -250,6 +284,7 @@ public:
         info->setTitle(QCoreApplication::translate("InterfacciaAmministratore", "Info", nullptr));
         menuFile->setTitle(QCoreApplication::translate("InterfacciaAmministratore", "File", nullptr));
         menuStruttura->setTitle(QCoreApplication::translate("InterfacciaAmministratore", "Struttura", nullptr));
+        menuPrenotazioni->setTitle(QCoreApplication::translate("InterfacciaAmministratore", "Prenotazioni", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("InterfacciaAmministratore", "toolBar", nullptr));
     } // retranslateUi
 

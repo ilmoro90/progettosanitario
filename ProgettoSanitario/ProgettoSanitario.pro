@@ -12,6 +12,7 @@ SOURCES += \
     Data.cpp \
     InterfacciaAmministratore.cpp \
     aggiungiprenotazionedialog.cpp \
+    disdicidialog.cpp \
     main.cpp \
     mainwindow.cpp \
     AmministrativoCup.cpp \
@@ -36,6 +37,7 @@ HEADERS += \
     Data.h \
     InterfacciaAmministratore.h \
     aggiungiprenotazionedialog.h \
+    disdicidialog.h \
     mainwindow.h \
     mainwindow.h \
     AmministrativoCup.h \
@@ -58,6 +60,7 @@ HEADERS += \
 FORMS += \
     InterfacciaAmministratore.ui \
     aggiungiprenotazionedialog.ui \
+    disdicidialog.ui \
     mainwindow.ui \
     modificalastrutturadialog.ui \
     rimuovistrutturadialog.ui \
